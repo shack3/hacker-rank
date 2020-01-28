@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+
+class Solution
+{
+    static void Main(String[] args)
+    {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        decimal[] array = new decimal[n];
+
+        array = Array.ConvertAll(Console.ReadLine().Split(' '), arrTemp => Convert.ToDecimal(arrTemp));
+
+        Array.Sort(array);
+
+        decimal sum, Mean, Median;
+        int l;
+        l = array.Length;
+        sum = array.Sum();
+
+        Mean = sum / l;
+        Median = (array[l / 2] + array[(l / 2) - 1]) / 2;
+
+        //Contar cosas
+        Console.WriteLine(Mean);
+        Console.WriteLine(Median);
+
+        Dictionary<decimal, int> num = new Dictionary<decimal, int>();
+        for (int b = 0; b < l; b++)
+        {
+            if (num.ContainsKey(array[b]))
+            {
+                num[array[b]] = num[array[b]] + 1;
+            }
+            else
+                num.Add(array[b], 1);
+        }
+
+        var maxCount = num.Values.Max();
+
+        var max = num.FirstOrDefault(x => x.Value == maxCount).Key /*num.Values.Max()*/;
+        var min = num.FirstOrDefault(x => x.Value == num.Values.Min()).Key;
+        if (maxCount == num.Values.Min())
+        {
+            Console.WriteLine(min);
+        }
+        else
+            Console.WriteLine(max);
+
+
+
+
+
+    }
+}
+

@@ -1,0 +1,63 @@
+//Using c# https://www.hackerrank.com/challenges/30-binary-numbers/problem
+//Sergio Morales 2020.
+
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution
+{
+
+    static void ToBinary(int n)
+    {
+        int[] binaryNum = new int[32];
+
+        int i = 0;
+        while (n > 0)
+        {
+            binaryNum[i] = n % 2;
+            n = n / 2;
+            i++;
+        }
+        //Console.WriteLine();
+        int count = 0;
+        int result = 0;
+        for (int j = i - 1; j >= 0; j--)
+        {
+            if (binaryNum[j] == 0)
+            {
+                count = 0;
+            }
+            else
+            {
+                count++;
+                result = Math.Max(result, count);
+            }
+        }
+            
+
+        Console.WriteLine(result);
+
+
+
+
+    }
+
+    static void Main(string[] args)
+    {
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        ToBinary(n);
+    }
+}

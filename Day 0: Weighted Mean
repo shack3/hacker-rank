@@ -1,0 +1,44 @@
+//Using c# https://www.hackerrank.com/challenges/s10-weighted-mean/problem
+//Sergio Morales 2020.
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution
+{
+
+    static void Main(string[] args)
+    {
+        int result;
+        int N = Convert.ToInt32(Console.ReadLine());
+
+        int[] x = new int[N];
+        int[] w = new int[N];
+
+        x = Array.ConvertAll(Console.ReadLine().Split(" "), arrTemp => Convert.ToInt32(arrTemp));
+        w = Array.ConvertAll(Console.ReadLine().Split(" "), arrTemp => Convert.ToInt32(arrTemp));
+
+        int firstValue = 0;
+        
+
+        for (int i = 0; i < N; i++)
+        {
+            firstValue = x[i] * w[i] + firstValue;
+        }
+
+        result = firstValue / w.Sum();
+        Console.WriteLine(result);
+
+    }
+}

@@ -20,25 +20,33 @@ class Solution
 
     static void Main(string[] args)
     {
-        int result;
+        decimal result;
         int N = Convert.ToInt32(Console.ReadLine());
 
-        int[] x = new int[N];
-        int[] w = new int[N];
+        string[] X_temp = Console.ReadLine().Split(' ');
+        string[] W_temp = Console.ReadLine().Split(' ');
 
-        x = Array.ConvertAll(Console.ReadLine().Split(" "), arrTemp => Convert.ToInt32(arrTemp));
-        w = Array.ConvertAll(Console.ReadLine().Split(" "), arrTemp => Convert.ToInt32(arrTemp));
 
-        int firstValue = 0;
+        decimal[] x = new decimal[N];
+        decimal[] w = new decimal[N];
+
+        for (int i = 0; i < N; i++)
+        {
+            x[i] = Convert.ToInt32(X_temp[i]);
+            w[i] = Convert.ToInt32(W_temp[i]);
+        }
+
+        decimal firstValue = 0;
         
 
         for (int i = 0; i < N; i++)
         {
             firstValue = x[i] * w[i] + firstValue;
         }
-
         result = firstValue / w.Sum();
-        Console.WriteLine(result);
+        string r = string.Format("{0:F1}",result );
+
+        Console.WriteLine(r);
 
     }
 }

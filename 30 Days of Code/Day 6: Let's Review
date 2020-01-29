@@ -1,0 +1,37 @@
+//Using c# https://www.hackerrank.com/challenges/30-review-loop/problem
+//Sergio Morales 2020.
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution
+{
+    static void Main(String[] args)
+    {
+        var nCases = int.Parse(Console.ReadLine());
+        for (int counter = 0; counter < nCases; counter++)
+        {
+            var inputLineArray = Console.ReadLine().ToCharArray();
+            int nLength = 0;
+            string evenNumbers;
+            string oddNumbers = evenNumbers = string.Empty;
+            foreach (var character in inputLineArray)
+            {
+                if (nLength % 2 == 1) // odd
+                {
+                    oddNumbers += character;
+                    nLength++;
+                    continue;
+                }
+
+                evenNumbers += character;
+                nLength++;
+            }
+
+            Console.WriteLine(string.Format("{0}{1}{2}",
+                                           evenNumbers,
+                                           " ",
+                                           oddNumbers));
+        }
+    }
+}

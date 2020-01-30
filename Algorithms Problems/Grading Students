@@ -1,0 +1,82 @@
+//Using c# https://www.hackerrank.com/challenges/grading/problem
+//Sergio Morales 2020.
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+
+    /*
+     * Complete the 'gradingStudents' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts INTEGER_ARRAY grades as parameter.
+     */
+
+    public static List<int> gradingStudents(List<int> grades)
+    {
+        
+        for (int i = 0; i < grades.Count; i++)
+        {
+            if (grades[i] < 38)
+            {
+                
+                Console.WriteLine(grades[i]);
+            }
+
+            if (grades[i] >= 38)
+            {
+                int n5;
+                decimal x;
+                
+                
+                x = ((grades[i] + 5) / 5);
+                n5 = Convert.ToInt32(Math.Round(x)) * 5;
+
+                if(n5 - grades[i] < 3 && n5>0)
+                {
+                    Console.WriteLine(n5);
+                }
+                else
+                    Console.WriteLine(grades[i]);
+            }
+        }
+
+        return grades;
+    }
+
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        
+
+        int gradesCount = Convert.ToInt32(Console.ReadLine().Trim());
+
+        List<int> grades = new List<int>();
+
+        for (int i = 0; i < gradesCount; i++)
+        {
+            int gradesItem = Convert.ToInt32(Console.ReadLine().Trim());
+            grades.Add(gradesItem);
+        }
+
+        List<int> result = Result.gradingStudents(grades);
+
+        
+    }
+}
